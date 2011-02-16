@@ -1,0 +1,36 @@
+Revision History for FvwmPiazza
+===============================
+
+v0.2 2011-02-16
+---------------
+
+* 2011-02-16 14:47:24 +1100
+  Ignore the ^FvwmPiazza build files.
+* 2011-02-16 14:45:26 +1100
+  Guess I'd better upload it to CPAN.
+* 2011-02-16 14:38:54 +1100
+  Prevent the windows being rearranged so much.
+* 2011-02-10 18:09:03 +1100
+  convert to use Dist::Zilla, second pass
+* 2011-02-10 12:59:42 +1100
+  convert to use Dist::Zilla, first pass
+* 2011-02-10 12:59:01 +1100
+  convert to use Dist::Zilla, first pass
+
+v0.01 2010-10-06
+----------------
+
+* 2010-10-06 14:23:23 +1100
+  Default Layouts can be set by Page now.
+* 2010-04-14 15:09:43 +1000
+  Added percent-width option to the Tall layout.
+* 2010-04-14 15:08:17 +1000
+  ignore Build files
+* 2009-11-29 23:49:01 +1100
+  Renaming FvwmTiler to FvwmPiazza
+* 2009-11-27 05:18:08 +0000
+  Made "Full" a separate layout in Layouts.
+
+===================================
+End of changes in the last 365 days
+===================================

@@ -1,0 +1,197 @@
+# NAME
+
+FvwmPiazza::Tiler - Fvwm module for tiling windows.
+
+# VERSION
+
+version 0.2
+
+# SYNOPSIS
+
+    use FvwmPiazza::Tiler;
+
+    my $obj = FvwmPiazza::Tiler->new(\%args);
+
+    ---------------------------------
+
+    *FvwmPiazza: Struts I<left> I<right> I<top> I<bottom>
+    *FvwmPiazza: Exclude Gimp
+    *FvwmPiazza: UseMaximize true
+    *FvwmPiazza: Layout0 Full
+    *FvwmPiazza: Layout1 Columns 2
+
+    Key	f   A	MS  SendToModule FvwmPiazza Full
+
+
+
+# DESCRIPTION
+
+This tiles windows in different ways.
+
+# METHODS
+
+## new
+
+## init
+
+## start
+
+$self->start();
+
+Start the event loop.
+
+# Handlers
+
+## observe_window_movement
+
+A FVWM::Tracker::WindowList observer,
+which tracks window movement
+(so we can see if the window has changed desks/pages).
+
+## observe_window_addition
+
+A FVWM::Tracker::WindowList observer,
+which tracks new windows
+
+## observe_window_deletion
+
+A FVWM::Tracker::WindowList observer,
+which tracks window destruction.
+
+## observe_window_iconify
+
+A FVWM::Tracker::WindowList observer,
+which tracks window iconify.
+
+## observe_window_deiconify
+
+A FVWM::Tracker::WindowList observer,
+which tracks window deiconify.
+
+## observe_page_change
+
+Respond to a page or desk-change event.
+
+## handle_focus_event
+
+Respond to a focus window event.
+
+## handle_command
+
+Respond to a command (SendToModule,M_STRING event)
+
+# Helper methods
+
+## set_transaction
+
+Set "transaction" on or off;
+this will temporarily disable some handlers
+since we don't want to react to things that
+we ourselves caused.
+
+## move_window_group
+
+Move the given window to the next or previous
+group on this page.
+
+## apply_tiling
+
+Apply the requested tiling layout.
+
+None Full
+
+Additional layouts are provided by layout plugins.
+
+## manage_window
+
+A new or newly visible window needs to be managed.
+
+## demanage_window
+
+A destroyed or newly invisible window needs to be de-managed.
+
+## init_new_page
+
+Initialize page information for the current page.
+
+## check_interest
+
+Look at the properties of the given window to see if we are interested in it.
+We aren't interested in SKIP_PAGER, SKIP_TASKBAR, DOCK or Withdrawn windows.
+We also aren't interested in transient windows.
+
+Also, we may not be interested in windows of certain classes or names.
+
+$res = $self->check_interest(window=>$id, tracker=>$tracker);
+
+$res = $self->check_interest(window=>$id, event=>$event);
+
+## dump_properties
+
+Dump the properties of the given window.
+
+## get_page_windows
+
+Get the windows on the given page.
+
+# REQUIRES
+
+    FVWM::Module
+    Class::Base
+
+# INSTALLATION
+
+To install this module, run the following commands:
+
+    perl Build.PL
+    ./Build
+    ./Build test
+    ./Build install
+
+Or, if you're on a platform (like DOS or Windows) that doesn't like the
+"./" notation, you can do this:
+
+   perl Build.PL
+   perl Build
+   perl Build test
+   perl Build install
+
+In order to install somewhere other than the default, such as
+in a directory under your home directory, like "/home/fred/perl"
+go
+
+   perl Build.PL --install_base /home/fred/perl
+
+as the first step instead.
+
+This will install the files underneath /home/fred/perl.
+
+You will then need to make sure that you alter the PERL5LIB variable to
+find the modules.
+
+Therefore you will need to change the PERL5LIB variable to add
+/home/fred/perl/lib
+
+	PERL5LIB=/home/fred/perl/lib:${PERL5LIB}
+
+# SEE ALSO
+
+perl(1).
+fvwm(1)
+
+# BUGS
+
+Please report any bugs or feature requests to the author.
+
+# AUTHOR
+
+    Kathryn Andersen (RUBYKAT)
+    perlkat AT katspace dot org
+    http://www.katspace.com/tools/fvwm_tiler/
+
+# COPYRIGHT AND LICENCE
+
+Copyright (c) 2009 by Kathryn Andersen
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.

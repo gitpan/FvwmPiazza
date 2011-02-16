@@ -1,0 +1,35 @@
+#! /usr/bin/env perl
+=head1 NAME
+
+ptiler - Fvwm module for tiling windows
+
+=head1 VERSION
+
+version 0.2
+
+=head1 SYNOPSIS
+
+ptiler 
+
+=head1 DESCRIPTION
+
+This tiles windows in different ways.
+
+=cut
+use lib `fvwm-perllib dir`;
+
+use FvwmPiazza::Tiler;
+
+#========================================================
+# Subroutines
+
+#========================================================
+# Main
+
+MAIN:
+{
+    my $tiler = new FvwmPiazza::Tiler();
+
+    $tiler->start();
+
+}
