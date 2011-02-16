@@ -1,6 +1,6 @@
 package FvwmPiazza::Layouts::Grid;
 BEGIN {
-  $FvwmPiazza::Layouts::Grid::VERSION = '0.2';
+  $FvwmPiazza::Layouts::Grid::VERSION = '0.2001';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::Layouts::Grid - Grid layout.
 
 =head1 VERSION
 
-version 0.2
+version 0.2001
 
 =head1 SYNOPSIS
 

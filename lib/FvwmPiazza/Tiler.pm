@@ -1,6 +1,6 @@
 package FvwmPiazza::Tiler;
 BEGIN {
-  $FvwmPiazza::Tiler::VERSION = '0.2';
+  $FvwmPiazza::Tiler::VERSION = '0.2001';
 }
 use strict;
 
@@ -10,7 +10,7 @@ FvwmPiazza::Tiler - Fvwm module for tiling windows.
 
 =head1 VERSION
 
-version 0.2
+version 0.2001
 
 =head1 SYNOPSIS
 
@@ -301,8 +301,8 @@ sub observe_window_addition {
 
     if (!$self->check_interest(window=>$wid))
     {
-	$self->debug("Not Interested in window $wid");
-	return 0;
+       $self->debug("Not Interested in window $wid");
+       return 0;
     }
     my $new_window = FvwmPiazza::GroupWindow->new(ID=>$wid);
     $self->{all_windows}->{$wid} = $new_window;
@@ -438,7 +438,7 @@ sub handle_command {
 
     my ($action, $args) = get_token($event->_text);
     return unless $action;
-    if ($action =~ /debug/i)
+    if ($action =~ /dump/i)
     {
 	$self->debug("===============================\n"
 		     . Dump($self)
@@ -500,7 +500,7 @@ sub move_window_group {
     my $self = shift;
     my %args = (
 		event=>undef,
-		action=>'Transaction',
+		action=>'',
 		args=>'',
 		@_
 	       );
@@ -514,7 +514,7 @@ sub move_window_group {
     if (!exists $self->{all_windows}->{$wid}
 	or !defined $self->{all_windows}->{$wid})
     {
-	$self->showError("$action: window $wid not known");
+	$self->showError(sprintf("%s: window 0x%x not known", $action, $wid));
 	return 0;
     }
     my $desk = $self->{pageTracker}->data->{desk_n};
@@ -897,6 +897,7 @@ sub check_interest {
 	)
 	{
 	    $interest = 0;
+	    $self->debug(sprintf("No interest in 0x%x because %s", $wid, $_));
 	    last;
 	}
 	# if we are including or excluding, then remember the class and names
@@ -929,6 +930,7 @@ sub check_interest {
 	    if ($exclude and $name =~ /$exclude/i)
 	    {
 		$excluded = 1;
+		$self->debug(sprintf("No interest in 0x%x because excluding '%s'", $wid, $name));
 	    }
 	}
 	if (!$included or $excluded)

@@ -4,7 +4,7 @@ FvwmPiazza::Tiler - Fvwm module for tiling windows.
 
 # VERSION
 
-version 0.2
+version 0.2001
 
 # SYNOPSIS
 

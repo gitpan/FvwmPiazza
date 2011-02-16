@@ -1,6 +1,6 @@
 package FvwmPiazza::Layouts::Wide;
 BEGIN {
-  $FvwmPiazza::Layouts::Wide::VERSION = '0.2';
+  $FvwmPiazza::Layouts::Wide::VERSION = '0.2001';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::Layouts::Wide - Wide layout.
 
 =head1 VERSION
 
-version 0.2
+version 0.2001
 
 =head1 SYNOPSIS
 

@@ -1,6 +1,24 @@
 Revision History for FvwmPiazza
 ===============================
 
+v0.2001 2011-02-16
+------------------
+
+* 2011-02-16 16:05:18 +1100
+  unreverting another reverted change
+* 2011-02-16 16:04:36 +1100
+  tweaks to fix minor bugs
+* 2011-02-16 16:02:26 +1100
+  Fixing up what was broken in the merge.
+* 2011-02-16 15:48:40 +1100
+  Revert "Merge branch 'master' of github.com:rubykat/FvwmPiazza"
+* 2011-02-16 14:51:10 +1100
+  Merge branch 'master' of github.com:rubykat/FvwmPiazza
+* 2011-02-16 14:43:11 +1100
+  Merge branch 'master' of github.com:rubykat/FvwmPiazza
+* 2010-10-27 14:23:03 +1100
+  Added command to "forget" and "remember" a window.
+
 v0.2 2011-02-16
 ---------------
 

@@ -28,4 +28,4 @@ requires:
 resources:
   homepage: http://github.com/rubykat/FvwmPiazza/tree
   repository: git://github.com/rubykat/FvwmPiazza.git
-version: 0.2
+version: 0.2001

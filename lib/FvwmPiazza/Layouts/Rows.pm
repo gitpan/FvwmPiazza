@@ -1,6 +1,6 @@
 package FvwmPiazza::Layouts::Rows;
 BEGIN {
-  $FvwmPiazza::Layouts::Rows::VERSION = '0.2';
+  $FvwmPiazza::Layouts::Rows::VERSION = '0.2001';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::Layouts::Rows - Rows layout.
 
 =head1 VERSION
 
-version 0.2
+version 0.2001
 
 =head1 SYNOPSIS
 
