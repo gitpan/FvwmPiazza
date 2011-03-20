@@ -1,6 +1,6 @@
 package FvwmPiazza::Layouts::Full;
 BEGIN {
-  $FvwmPiazza::Layouts::Full::VERSION = '0.2001';
+  $FvwmPiazza::Layouts::Full::VERSION = '0.2002';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::Layouts::Full - Full layout.
 
 =head1 VERSION
 
-version 0.2001
+version 0.2002
 
 =head1 SYNOPSIS
 

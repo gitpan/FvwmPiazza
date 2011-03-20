@@ -1,5 +1,5 @@
 ---
-abstract: 'Fvwm module for tiling windows.'
+abstract: 'Fvwm module for tiling windows'
 author:
   - 'Kathryn Andersen'
 build_requires:
@@ -13,7 +13,7 @@ build_requires:
 configure_requires:
   Module::Build: 0.3601
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200003, CPAN::Meta::Converter version 2.101670'
+generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.101670'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -28,4 +28,4 @@ requires:
 resources:
   homepage: http://github.com/rubykat/FvwmPiazza/tree
   repository: git://github.com/rubykat/FvwmPiazza.git
-version: 0.2001
+version: 0.2002

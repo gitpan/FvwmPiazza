@@ -18,12 +18,12 @@ my %module_build_args = (
   'configure_requires' => {
     'Module::Build' => '0.3601'
   },
-  'dist_abstract' => 'Fvwm module for tiling windows.',
+  'dist_abstract' => 'Fvwm module for tiling windows',
   'dist_author' => [
     'Kathryn Andersen'
   ],
   'dist_name' => 'FvwmPiazza',
-  'dist_version' => '0.2001',
+  'dist_version' => '0.2002',
   'license' => 'perl',
   'module_name' => 'FvwmPiazza',
   'recommends' => {},

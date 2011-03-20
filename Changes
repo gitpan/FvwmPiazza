@@ -1,6 +1,16 @@
 Revision History for FvwmPiazza
 ===============================
 
+v0.2002 2011-03-20
+------------------
+
+* 2011-03-20 12:01:32 +1100
+  More doc tweaks.  Version bump.
+* 2011-03-20 11:50:26 +1100
+  adding some actual documentation
+* 2011-03-12 12:50:32 +1100
+  reverted back to previous swapping behaviour
+
 v0.2001 2011-02-16
 ------------------
 
