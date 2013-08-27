@@ -1,6 +1,22 @@
 Revision History for FvwmPiazza
 ===============================
 
+v0.2004 2013-08-27
+------------------
+
+* 2013-08-27 18:35:52 +1000
+  version bump
+* 2013-08-27 17:51:31 +1000
+  Checking maximization behaviour.
+* 2013-08-27 17:43:05 +1000
+  clarification
+* 2013-08-27 16:48:48 +1000
+  add check_args method
+* 2013-08-27 16:43:26 +1000
+  add check_args method
+* 2013-08-27 16:30:08 +1000
+  Improve the calculate_ratios method.
+
 v0.2003 2013-08-27
 ------------------
 

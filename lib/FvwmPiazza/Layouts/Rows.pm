@@ -1,6 +1,6 @@
 package FvwmPiazza::Layouts::Rows;
 {
-  $FvwmPiazza::Layouts::Rows::VERSION = '0.2003';
+  $FvwmPiazza::Layouts::Rows::VERSION = '0.2004';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::Layouts::Rows - Rows layout.
 
 =head1 VERSION
 
-version 0.2003
+version 0.2004
 
 =head1 SYNOPSIS
 
@@ -69,21 +69,10 @@ sub apply_layout {
 		tiler=>undef,
 		@_
 	       );
-    if (!defined $args{area})
+    my $err = $self->check_args(%args);
+    if ($err)
     {
-	return $self->error("area not defined");
-    }
-    if (!defined $args{tiler})
-    {
-	return $self->error("tiler not defined");
-    }
-    if ($args{vp_width} == 0)
-    {
-	return $self->error("vp_width is zero");
-    }
-    if ($args{vp_height} == 0)
-    {
-	return $self->error("vp_height is zero");
+        return $self->error($err);
     }
     my $area = $args{area};
     my @options = @{$args{options}};
@@ -96,10 +85,6 @@ sub apply_layout {
     my $num_rows = $args{max_win};
     my $num_win = $area->num_windows();
 
-    if ($num_win == 0)
-    {
-	return $self->error("there are zero windows");
-    }
     if ($num_win < $num_rows)
     {
 	$area->redistribute_windows(n_groups=>$num_win);

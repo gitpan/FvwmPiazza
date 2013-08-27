@@ -1,6 +1,6 @@
 package FvwmPiazza::Page;
 {
-  $FvwmPiazza::Page::VERSION = '0.2003';
+  $FvwmPiazza::Page::VERSION = '0.2004';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::Page - FvwmPiazza class for keeping track of page info.
 
 =head1 VERSION
 
-version 0.2003
+version 0.2004
 
 =head1 SYNOPSIS
 
@@ -241,6 +241,9 @@ sub redistribute_windows {
     );
 
     my $n_groups = ($args{n_groups} ? $args{n_groups} : $self->num_groups());
+
+    # This mostly preserves window groupings because it
+    # preserves the order of the windows taken from the groups
     my @window_list = ();
     foreach my $gid (sort keys %{$self->{groups}})
     {

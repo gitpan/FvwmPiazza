@@ -1,6 +1,6 @@
 package FvwmPiazza::Group;
 {
-  $FvwmPiazza::Group::VERSION = '0.2003';
+  $FvwmPiazza::Group::VERSION = '0.2004';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::Group - FvwmPiazza class for grouping.
 
 =head1 VERSION
 
-version 0.2003
+version 0.2004
 
 =head1 SYNOPSIS
 

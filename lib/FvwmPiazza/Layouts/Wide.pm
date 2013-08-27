@@ -1,6 +1,6 @@
 package FvwmPiazza::Layouts::Wide;
 {
-  $FvwmPiazza::Layouts::Wide::VERSION = '0.2003';
+  $FvwmPiazza::Layouts::Wide::VERSION = '0.2004';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::Layouts::Wide - Wide layout.
 
 =head1 VERSION
 
-version 0.2003
+version 0.2004
 
 =head1 SYNOPSIS
 
@@ -70,21 +70,10 @@ sub apply_layout {
 		tiler=>undef,
 		@_
 	       );
-    if (!defined $args{area})
+    my $err = $self->check_args(%args);
+    if ($err)
     {
-	return $self->error("area not defined");
-    }
-    if (!defined $args{tiler})
-    {
-	return $self->error("tiler not defined");
-    }
-    if ($args{vp_width} == 0)
-    {
-	return $self->error("vp_width is zero");
-    }
-    if ($args{vp_height} == 0)
-    {
-	return $self->error("vp_height is zero");
+        return $self->error($err);
     }
     my $area = $args{area};
     my @options = @{$args{options}};
@@ -96,11 +85,6 @@ sub apply_layout {
 
     my $num_win = $area->num_windows();
     my $max_win = $args{max_win};
-
-    if ($num_win == 0)
-    {
-	return $self->error("there are zero windows");
-    }
 
     my $num_rows = 2;
     my $wide_row_nr = 0;

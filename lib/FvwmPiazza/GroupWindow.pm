@@ -1,6 +1,6 @@
 package FvwmPiazza::GroupWindow;
 {
-  $FvwmPiazza::GroupWindow::VERSION = '0.2003';
+  $FvwmPiazza::GroupWindow::VERSION = '0.2004';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::GroupWindow - FvwmPiazza class for windows.
 
 =head1 VERSION
 
-version 0.2003
+version 0.2004
 
 =head1 SYNOPSIS
 
@@ -89,13 +89,15 @@ sub arrange_self {
     );
     # Even though we are calling this by window-id, add the window-id condition
     # to prevent a race condition (i hope)
-    my $msg = "WindowId "
-                                . $self->{ID}
-                                . " (Maximizable) "
-                                . ($self->{MAXIMIZE} ? "ResizeMoveMaximize" : "ResizeMove")
-                                . " frame $args{width}p $args{height}p $args{x}p $args{y}p", 
-                                $self->{ID};
-    $args{module}->postponeSend($msg);
+    my $msg = sprintf("WindowId %s %s %s frame %dp %dp %dp %dp",
+                      $self->{ID},
+                      ($self->{MAXIMIZE} ? "(Maximizable)" : '(!Maximized)'),
+                      ($self->{MAXIMIZE} ? "ResizeMoveMaximize" : "ResizeMove"),
+                      $args{width},
+                      $args{height},
+                      $args{x},
+                      $args{y});
+    $args{module}->postponeSend($msg, $self->{ID});
 } # arrange_self
 
 1; # End

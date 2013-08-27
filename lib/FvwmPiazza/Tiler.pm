@@ -1,6 +1,6 @@
 package FvwmPiazza::Tiler;
 {
-  $FvwmPiazza::Tiler::VERSION = '0.2003';
+  $FvwmPiazza::Tiler::VERSION = '0.2004';
 }
 use strict;
 
@@ -10,7 +10,7 @@ FvwmPiazza::Tiler - Fvwm module for tiling windows.
 
 =head1 VERSION
 
-version 0.2003
+version 0.2004
 
 =head1 SYNOPSIS
 
