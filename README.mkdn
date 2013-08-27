@@ -1,6 +1,6 @@
 # VERSION
 
-version 0.2002
+version 0.2003
 
 # SYNOPSIS
 
@@ -32,62 +32,62 @@ This will set the layout for the current desktop to "Full" when Alt-Ctrl-f is hi
 
 - Columns
 
-    Columns I<cols>
+        Columns I<cols>
 
-Windows are arranged in _cols_ columns.
+    Windows are arranged in _cols_ columns.
 
-    Columns I<cols>,I<proportions>
+        Columns I<cols>,I<proportions>
 
-If a _proportions_ argument is given, this defines the proportions of the columns.
-For example, "Columns 2,60:40" will give the first column 60% of the space, and the
-second column 40% of the space.
+    If a _proportions_ argument is given, this defines the proportions of the columns.
+    For example, "Columns 2,60:40" will give the first column 60% of the space, and the
+    second column 40% of the space.
 
 - Full
 
-All windows are fullscreen.
+    All windows are fullscreen.
 
 - Grid
 
-    Grid I<grids>,I<cols>
+        Grid I<grids>,I<cols>
 
-Windows are arranged in a grid of _grids_ squares, with _cols_ columns.
-Thus to get a 2x2 grid, the command is "Grid 4,2".
+    Windows are arranged in a grid of _grids_ squares, with _cols_ columns.
+    Thus to get a 2x2 grid, the command is "Grid 4,2".
 
 - Rows
 
-    Rows I<rows>
+        Rows I<rows>
 
-Windows are arranged in _rows_ rows.
+    Windows are arranged in _rows_ rows.
 
-    Rows I<rows>,I<proportions>
+        Rows I<rows>,I<proportions>
 
-If a _proportions_ argument is given, this defines the proportions of the rows.
-For example, "Rows 2,60:40" will give the first row 60% of the space, and the
-second row 40% of the space.
+    If a _proportions_ argument is given, this defines the proportions of the rows.
+    For example, "Rows 2,60:40" will give the first row 60% of the space, and the
+    second row 40% of the space.
 
 - Tall
 
-    Tall I<groups>
+        Tall I<groups>
 
-Windows are arranged such that the first window is in one column, and the rest of the windows
-are in (_groups_ - 1) rows in the second column.
+    Windows are arranged such that the first window is in one column, and the rest of the windows
+    are in (_groups_ - 1) rows in the second column.
 
-    Tall I<groups>,Right
+        Tall I<groups>,Right
 
-If a second argument "Right" is given ("Tall 3,Right" for example) then the arrangement is
-a mirror-image, with the single-window column being on the right instead of the left.
+    If a second argument "Right" is given ("Tall 3,Right" for example) then the arrangement is
+    a mirror-image, with the single-window column being on the right instead of the left.
 
 - Wide
 
-    Wide I<groups>
+        Wide I<groups>
 
-Windows are arranged such that the first window is in one row, and the rest of the windows
-are in (_groups_ - 1) columns in the second row.
+    Windows are arranged such that the first window is in one row, and the rest of the windows
+    are in (_groups_ - 1) columns in the second row.
 
-    Wide I<groups>,Bottom
+        Wide I<groups>,Bottom
 
-If a second argument "Bottom" is given ("Wide 3,Bottom" for example) then the arrangement is
-a mirror-image, with the single-window row being on the bottom instead of the top.
+    If a second argument "Bottom" is given ("Wide 3,Bottom" for example) then the arrangement is
+    a mirror-image, with the single-window row being on the bottom instead of the top.
 
 ## Moving Windows
 
@@ -294,15 +294,15 @@ This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 =cut
 
-use lib `fvwm-perllib dir`;
+use lib \`fvwm-perllib dir\`;
 
 use FvwmPiazza::Tiler;
 
-#========================================================
-# Subroutines
+\#========================================================
+\# Subroutines
 
-#========================================================
-# Main
+\#========================================================
+\# Main
 
 MAIN:
 {

@@ -1,6 +1,6 @@
 package FvwmPiazza::Layouts;
-BEGIN {
-  $FvwmPiazza::Layouts::VERSION = '0.2002';
+{
+  $FvwmPiazza::Layouts::VERSION = '0.2003';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::Layouts - Base class for FvwmPiazza layouts.
 
 =head1 VERSION
 
-version 0.2002
+version 0.2003
 
 =head1 SYNOPSIS
 

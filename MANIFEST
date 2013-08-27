@@ -19,10 +19,8 @@ lib/FvwmPiazza/Page.pm
 lib/FvwmPiazza/Tiler.pm
 scripts/FvwmPiazza
 t/00-compile.t
-t/author-critic_progressive.t
 t/release-distmeta.t
 t/release-has-version.t
-t/release-kwalitee.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
 t/release-portability.t

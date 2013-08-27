@@ -1,6 +1,6 @@
 package FvwmPiazza::Layouts::Tall;
-BEGIN {
-  $FvwmPiazza::Layouts::Tall::VERSION = '0.2002';
+{
+  $FvwmPiazza::Layouts::Tall::VERSION = '0.2003';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::Layouts::Tall - Tall layout.
 
 =head1 VERSION
 
-version 0.2002
+version 0.2003
 
 =head1 SYNOPSIS
 

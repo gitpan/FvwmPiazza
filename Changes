@@ -1,63 +1,17 @@
 Revision History for FvwmPiazza
 ===============================
 
-v0.2002 2011-03-20
+v0.2003 2013-08-27
 ------------------
 
-* 2011-03-20 12:01:32 +1100
-  More doc tweaks.  Version bump.
-* 2011-03-20 11:50:26 +1100
-  adding some actual documentation
-* 2011-03-12 12:50:32 +1100
-  reverted back to previous swapping behaviour
-
-v0.2001 2011-02-16
-------------------
-
-* 2011-02-16 16:05:18 +1100
-  unreverting another reverted change
-* 2011-02-16 16:04:36 +1100
-  tweaks to fix minor bugs
-* 2011-02-16 16:02:26 +1100
-  Fixing up what was broken in the merge.
-* 2011-02-16 15:48:40 +1100
-  Revert "Merge branch 'master' of github.com:rubykat/FvwmPiazza"
-* 2011-02-16 14:51:10 +1100
-  Merge branch 'master' of github.com:rubykat/FvwmPiazza
-* 2011-02-16 14:43:11 +1100
-  Merge branch 'master' of github.com:rubykat/FvwmPiazza
-* 2010-10-27 14:23:03 +1100
-  Added command to "forget" and "remember" a window.
-
-v0.2 2011-02-16
----------------
-
-* 2011-02-16 14:47:24 +1100
-  Ignore the ^FvwmPiazza build files.
-* 2011-02-16 14:45:26 +1100
-  Guess I'd better upload it to CPAN.
-* 2011-02-16 14:38:54 +1100
-  Prevent the windows being rearranged so much.
-* 2011-02-10 18:09:03 +1100
-  convert to use Dist::Zilla, second pass
-* 2011-02-10 12:59:42 +1100
-  convert to use Dist::Zilla, first pass
-* 2011-02-10 12:59:01 +1100
-  convert to use Dist::Zilla, first pass
-
-v0.01 2010-10-06
-----------------
-
-* 2010-10-06 14:23:23 +1100
-  Default Layouts can be set by Page now.
-* 2010-04-14 15:09:43 +1000
-  Added percent-width option to the Tall layout.
-* 2010-04-14 15:08:17 +1000
-  ignore Build files
-* 2009-11-29 23:49:01 +1100
-  Renaming FvwmTiler to FvwmPiazza
-* 2009-11-27 05:18:08 +0000
-  Made "Full" a separate layout in Layouts.
+* 2013-08-27 15:59:28 +1000
+  updating dist.ini
+* 2013-08-27 15:52:37 +1000
+  version bump
+* 2013-08-27 15:49:30 +1000
+  Implemented the "UseMaximize false" setting.
+* 2012-02-06 00:32:05 +1100
+  added a ConfirmRelease test
 
 ===================================
 End of changes in the last 365 days

@@ -1,6 +1,6 @@
 package FvwmPiazza::Page;
-BEGIN {
-  $FvwmPiazza::Page::VERSION = '0.2002';
+{
+  $FvwmPiazza::Page::VERSION = '0.2003';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::Page - FvwmPiazza class for keeping track of page info.
 
 =head1 VERSION
 
-version 0.2002
+version 0.2003
 
 =head1 SYNOPSIS
 
