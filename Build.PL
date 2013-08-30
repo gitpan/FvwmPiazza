@@ -17,7 +17,7 @@ my %module_build_args = (
     "Kathryn Andersen"
   ],
   "dist_name" => "FvwmPiazza",
-  "dist_version" => "0.2004",
+  "dist_version" => "0.3",
   "license" => "perl",
   "module_name" => "FvwmPiazza",
   "recommends" => {},
@@ -26,6 +26,7 @@ my %module_build_args = (
     "Class::Base" => 0,
     "FVWM::Module" => 0,
     "General::Parse" => 0,
+    "Getopt::Long" => 0,
     "Module::Pluggable" => 0,
     "YAML::Syck" => 0,
     "base" => 0,

@@ -12,6 +12,7 @@ lib/FvwmPiazza/Layouts.pm
 lib/FvwmPiazza/Layouts/Columns.pm
 lib/FvwmPiazza/Layouts/Full.pm
 lib/FvwmPiazza/Layouts/Grid.pm
+lib/FvwmPiazza/Layouts/Matrix.pm
 lib/FvwmPiazza/Layouts/Rows.pm
 lib/FvwmPiazza/Layouts/Tall.pm
 lib/FvwmPiazza/Layouts/Wide.pm

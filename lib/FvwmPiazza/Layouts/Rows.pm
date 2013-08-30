@@ -1,6 +1,6 @@
 package FvwmPiazza::Layouts::Rows;
 {
-  $FvwmPiazza::Layouts::Rows::VERSION = '0.2004';
+  $FvwmPiazza::Layouts::Rows::VERSION = '0.3';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::Layouts::Rows - Rows layout.
 
 =head1 VERSION
 
-version 0.2004
+version 0.3
 
 =head1 SYNOPSIS
 
@@ -75,7 +75,20 @@ sub apply_layout {
         return $self->error($err);
     }
     my $area = $args{area};
+
+    # parse the options, if any
     my @options = @{$args{options}};
+    my $ratio_args;
+    my $parser = new Getopt::Long::Parser();
+    if (!$parser->getoptionsfromarray(\@options,
+                                      'ratios=s' => \$ratio_args))
+    {
+        $args{tiler}->debug("Grid failed to parse options: " . join(':', @options));
+    }
+    if (!defined $ratio_args)
+    {
+        $ratio_args = (@options ? shift @options : '');
+    }
 
     my $working_width = $args{vp_width} -
 	($args{left_offset} + $args{right_offset});
@@ -99,10 +112,10 @@ sub apply_layout {
     # Don't apply the passed-in ratios if we have fewer rows
     # than the layout requires
     my @ratios = ();
-    if ($num_rows == $args{max_win} and defined $options[0])
+    if ($num_rows == $args{max_win} and $ratio_args)
     {
 	@ratios = $self->calculate_ratios(num_sets=>$num_rows,
-	    ratios=>$options[0]);
+	    ratios=>$ratio_args);
     }
     else
     {

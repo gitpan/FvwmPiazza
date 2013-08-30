@@ -1,6 +1,6 @@
 package FvwmPiazza::GroupWindow;
 {
-  $FvwmPiazza::GroupWindow::VERSION = '0.2004';
+  $FvwmPiazza::GroupWindow::VERSION = '0.3';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::GroupWindow - FvwmPiazza class for windows.
 
 =head1 VERSION
 
-version 0.2004
+version 0.3
 
 =head1 SYNOPSIS
 

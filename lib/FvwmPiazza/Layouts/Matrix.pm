@@ -1,13 +1,13 @@
-package FvwmPiazza::Layouts::Tall;
+package FvwmPiazza::Layouts::Matrix;
 {
-  $FvwmPiazza::Layouts::Tall::VERSION = '0.3';
+  $FvwmPiazza::Layouts::Matrix::VERSION = '0.3';
 }
 use strict;
 use warnings;
 
 =head1 NAME
 
-FvwmPiazza::Layouts::Tall - Tall layout.
+FvwmPiazza::Layouts::Matrix - Matrix layout.
 
 =head1 VERSION
 
@@ -19,8 +19,7 @@ version 0.3
 
 =head1 DESCRIPTION
 
-This defines the "Tall" layout for FvwmPiazza.
-One "tall" column and the rest of the windows in the other column.
+This defines the "Matrix" layout for FvwmPiazza.
 
 =cut
 
@@ -49,7 +48,6 @@ sub init {
     return $self;
 } # init
 
-
 =head2 apply_layout
 
 Apply the requested tiling layout.
@@ -73,21 +71,20 @@ sub apply_layout {
     my $err = $self->check_args(%args);
     if ($err)
     {
-        return $self->error($err);
+	return $self->error($err);
     }
     my $area = $args{area};
-
-    # parse the options, if any
     my @options = @{$args{options}};
-    my $tall_style;
+    my $num_cols = 2;
     my @rat_args = ();
-    my $width_ratio;
-    my $height_ratio;
+    my $width_ratio = '';
+    my $height_ratio = '';
+    my @row_arr = ();
 
-    # new-style
     my $parser = new Getopt::Long::Parser();
     if (!$parser->getoptionsfromarray(\@options,
-                                      'variant=s' => \$tall_style,
+                                      'cols=n' => \$num_cols,
+                                      'rows=s@' => \@row_arr,
                                       'ratios=s@' => \@rat_args,
                                       "width_ratio=s" => \$width_ratio,
                                       "height_ratio=s" => \$height_ratio))
@@ -109,26 +106,31 @@ sub apply_layout {
             $height_ratio = $rat_args[1];
         }
     }
-    # old-style
-    if (!defined $tall_style)
+
+    my @row_set = ();
+    if (@row_arr)
     {
-        $tall_style = (@options ? shift @options : '');
+        push @row_set, @row_arr;
+        # repeat the last one until full
+        while ($num_cols > @row_set)
+        {
+            push @row_set, $row_arr[$#row_arr];
+        }
     }
-    if (!defined $width_ratio)
+    # the default number of rows per column is 2
+    while ($num_cols > @row_set)
     {
-        $width_ratio = (@options ? shift @options : '');
+	push @row_set, 2;
     }
-    if (!defined $height_ratio)
-    {
-        $height_ratio = (@options ? shift @options : '');
-    }
+    # row_set should now have a value for each column.
+
+    my $working_width = $args{vp_width} -
+	($args{left_offset} + $args{right_offset});
+    my $working_height = $args{vp_height} -
+	($args{top_offset} + $args{bottom_offset});
 
     my $num_win = $area->num_windows();
     my $max_win = $args{max_win};
-
-    my $num_cols = 2;
-    $num_cols = 1 if $num_win == 1;
-    my $tall_col_nr = ($tall_style =~ /Right/i ? 1 : 0);
 
     # adjust the max-win if we have few windows
     if ($num_win < $max_win)
@@ -140,19 +142,12 @@ sub apply_layout {
     {
 	$area->redistribute_windows(n_groups=>$max_win);
     }
-    my $num_rows = $max_win - 1;
-    $num_rows = 1 if $num_rows <= 0;
 
-    my $working_width = $args{vp_width} -
-	($args{left_offset} + $args{right_offset});
-    my $working_height = $args{vp_height} -
-	($args{top_offset} + $args{bottom_offset});
+    $num_cols = 1 if $num_win == 1;
 
-    # Calculate the width and height ratios
+    # Calculate the width ratios
     my @width_ratios =
 	$self->calculate_ratios(num_sets=>$num_cols, ratios=>$width_ratio);
-    my @height_ratios =
-	$self->calculate_ratios(num_sets=>$num_rows, ratios=>$height_ratio);
 
     my $col_nr = 0;
     my $row_nr = 0;
@@ -160,56 +155,38 @@ sub apply_layout {
     my $xpos = $args{left_offset};
     for (my $gnr=0; $gnr < $max_win; $gnr++)
     {
-	my $col_width = int($working_width * $width_ratios[$col_nr]);
-	my $row_height = int($working_height * $height_ratios[$row_nr]);
 	my $group = $area->group($gnr);
+	my $col_width = int($working_width * $width_ratios[$col_nr]);
+	my $num_rows = $row_set[$col_nr];
 
-	if ($col_nr == $tall_col_nr)
-	{
-	    $group->arrange_group(module=>$args{tiler},
-				  x=>$xpos,
-				  y=>$ypos,
-				  width=>$col_width,
-				  height=>$working_height);
-	    $args{tiler}
-	    ->debug("tall_col_nr=$tall_col_nr col_width=$col_width");
-	}
-	else
-	{
-	    $group->arrange_group(module=>$args{tiler},
-				  x=>$xpos,
-				  y=>$ypos,
-				  width=>$col_width,
-				  height=>$row_height);
-	    $args{tiler}
-	    ->debug("col=$col_nr, row=$row_nr, xpos=$xpos, ypos=$ypos");
-	}
+	# Re-calculate the height ratios for each column,
+	# since there are a varying number of rows
+	# Note that there is only ONE height-ratio given for row-heights,
+	# so its effectiveness is somewhat limited.
+	my @height_ratios =
+	$self->calculate_ratios(num_sets=>$num_rows, ratios=>$height_ratio);
+	my $row_height = int($working_height * $height_ratios[$row_nr]);
 
-	if ($col_nr == $tall_col_nr)
+        $args{tiler}->debug("MATRIX gnr=$gnr num_rows=$num_rows col_nr=$col_nr row_nr=$row_nr xpos=$xpos ypos=$ypos");
+	$group->arrange_group(module=>$args{tiler},
+                              x=>$xpos,
+                              y=>$ypos,
+                              width=>$col_width,
+                              height=>$row_height);
+
+	$row_nr++;
+	$ypos += $row_height;
+	if ($row_nr == $num_rows)
 	{
+	    $row_nr = 0;
+            $ypos = $args{top_offset};
 	    $col_nr++;
-	    $row_nr = 0;
-	    $ypos = $args{top_offset};
 	    $xpos += $col_width;
-	}
-	else
-	{
-	    $row_nr++;
-	    $ypos += $row_height;
-	    if ($row_nr == $num_rows)
+	    if ($col_nr == $num_cols)
 	    {
-		$row_nr = 0;
-		$ypos = $args{top_offset};
-		$col_nr++;
-		$xpos += $col_width;
+		$col_nr = 0;
+                $xpos = $args{left_offset};
 	    }
-	}
-	if ($col_nr == $num_cols)
-	{
-	    $col_nr = 0;
-	    $row_nr = 0;
-	    $xpos = $args{left_offset};
-	    $ypos = $args{top_offset};
 	}
     }
 
