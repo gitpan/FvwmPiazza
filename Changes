@@ -1,6 +1,22 @@
 Revision History for FvwmPiazza
 ===============================
 
+v0.3001 2013-09-02
+------------------
+
+* 2013-09-02 15:50:20 +1000
+  version bump
+* 2013-09-02 15:47:05 +1000
+  This time fer shure! Fixing option parsing issues.
+* 2013-09-02 15:24:11 +1000
+  Still strange.
+* 2013-09-02 15:18:28 +1000
+  Something fishy is going on around here.
+* 2013-09-02 15:14:01 +1000
+  Further fixing of argument parsing.
+* 2013-09-02 15:02:49 +1000
+  Fixing bug with argument parsing.
+
 v0.3 2013-08-30
 ---------------
 

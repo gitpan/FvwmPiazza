@@ -1,6 +1,6 @@
 package FvwmPiazza::Layouts::Columns;
 {
-  $FvwmPiazza::Layouts::Columns::VERSION = '0.3';
+  $FvwmPiazza::Layouts::Columns::VERSION = '0.3001';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::Layouts::Columns - Columns layout.
 
 =head1 VERSION
 
-version 0.3
+version 0.3001
 
 =head1 SYNOPSIS
 
@@ -107,20 +107,21 @@ sub apply_layout {
     my @ratios = ();
     if ($num_cols == $args{max_win} and defined $options[0])
     {
+        local @ARGV = @options;
         my $ratio_arg;
         my $parser = new Getopt::Long::Parser();
-        if ($options[0] =~ /^\d[\d:]*$/)
+        if ($ARGV[0] =~ /^\d[\d:]*$/)
         {
             $ratio_arg = $options[0];
         }
-        elsif (!$parser->getoptionsfromarray(\@options,
-                                           "ratios=s" => \$ratio_arg))
+        elsif (!$parser->getoptions("ratios=s" => \$ratio_arg))
         {
             $args{tiler}->debug("Columns: failed to parse options: " . join(':', @options));
             $ratio_arg = $num_cols;
         }
         @ratios = $self->calculate_ratios(num_sets=>$num_cols,
 	    ratios=>$ratio_arg);
+        @options = @ARGV;
     }
     else
     {

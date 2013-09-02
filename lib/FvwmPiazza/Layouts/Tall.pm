@@ -1,6 +1,6 @@
 package FvwmPiazza::Layouts::Tall;
 {
-  $FvwmPiazza::Layouts::Tall::VERSION = '0.3';
+  $FvwmPiazza::Layouts::Tall::VERSION = '0.3001';
 }
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ FvwmPiazza::Layouts::Tall - Tall layout.
 
 =head1 VERSION
 
-version 0.3
+version 0.3001
 
 =head1 SYNOPSIS
 
@@ -84,15 +84,19 @@ sub apply_layout {
     my $width_ratio;
     my $height_ratio;
 
-    # new-style
-    my $parser = new Getopt::Long::Parser();
-    if (!$parser->getoptionsfromarray(\@options,
-                                      'variant=s' => \$tall_style,
-                                      'ratios=s@' => \@rat_args,
-                                      "width_ratio=s" => \$width_ratio,
-                                      "height_ratio=s" => \$height_ratio))
     {
-        $args{tiler}->debug("Failed to parse options: " . join(':', @options));
+        # new-style
+        local @ARGV = @options;
+        my $parser = new Getopt::Long::Parser();
+        if (!$parser->getoptions(
+                'variant=s' => \$tall_style,
+                'ratios=s@' => \@rat_args,
+                "width_ratio=s" => \$width_ratio,
+                "height_ratio=s" => \$height_ratio))
+        {
+            $args{tiler}->debug("Failed to parse options: " . join(':', @options));
+        }
+        @options = @ARGV;
     }
     if (@rat_args)
     {

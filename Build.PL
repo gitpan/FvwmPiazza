@@ -17,7 +17,7 @@ my %module_build_args = (
     "Kathryn Andersen"
   ],
   "dist_name" => "FvwmPiazza",
-  "dist_version" => "0.3",
+  "dist_version" => "0.3001",
   "license" => "perl",
   "module_name" => "FvwmPiazza",
   "recommends" => {},
